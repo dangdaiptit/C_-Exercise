@@ -1,7 +1,10 @@
-#include <stdio.h>
-#include <conio.h>
-#include <stdlib.h>
-#include<string.h>
+#include<conio.h>
+#include<stdio.h>
+#include <iostream>
+#include <string.h>
+
+using namespace std;
+
 struct hogiadinh{
     char tenchuho[30];
     int loaiho;
@@ -20,46 +23,46 @@ void chuyenDoi();
     int n;
     bool daNhap = false;
     do{
-        printf("\nNhap so luong ho gia dinh: "); scanf("%d", &n);
+        cout<<"\nNhap so luong ho gia dinh: "; cin>>n;
     }while(n <= 0);
     GD a[n];
     while(true){
         system("cls");
-        printf("******************************************\n");
-        printf("**    CHUONG TRINH QUAN LY TIEN DIEN    **\n");
-        printf("**      1. Nhap du lieu                 **\n");               
-        printf("**      2. Xuat File                    **\n");
-        printf("**      0. Thoat                        **\n");
-        printf("******************************************\n");
-        printf("**       Nhap lua chon cua ban          **\n");
-        scanf("%d",&key);
+        cout<<"******************************************\n";
+        cout<<"**    CHUONG TRINH QUAN LY TIEN DIEN    **\n";
+        cout<<"**      1. Nhap du lieu                 **\n";               
+        cout<<"**      2. Xuat File                    **\n";
+        cout<<"**      0. Thoat                        **\n";
+        cout<<"******************************************\n";
+        cout<<"**       Nhap lua chon cua ban          **\n";
+        cin>>key;
         switch(key){
             case 1:
-                printf("\nBan da chon nhap du lieu!");
+                cout<<"\nBan da chon nhap du lieu!";
                 Input(a, n);
-                printf("\nBan da nhap thanh cong!");
+                cout<<"\nBan da nhap thanh cong!";
                 daNhap = true;
-                printf("\nBam phim bat ky de tiep tuc!");
+                cout<<"\nBam phim bat ky de tiep tuc!";
                 getch();
                 break;
             case 2:        
                 if(daNhap){
-                    printf("\nBan da chon xuat du lieu!");
+                    cout<<"\nBan da chon xuat du lieu!";
                     exportfile(a, n, fileName);
                 }else{
-                    printf("\nNhap DS SV truoc!!!!");
+                    cout<<"\nNhap DS SV truoc!!!!";
                 }
                 printf("\nXuat DSSV thanh cong vao file %s!", fileName);
-                printf("\nBam phim bat ky de tiep tuc!");
+                cout<<"\nBam phim bat ky de tiep tuc!";
                 getch();
                 break;
             case 0:
-                printf("\nBan da chon thoat chuong trinh!");
+                cout<<"\nBan da chon thoat chuong trinh!";
                 getch();
                 return 0;
             default:
-                printf("\nKhong co chuc nang nay!");
-                printf("\nBam phim bat ky de tiep tuc!");
+                cout<<"\nKhong co chuc nang nay!";
+                cout<<"\nBam phim bat ky de tiep tuc!";
                 getch();
                 break;
         }
@@ -83,20 +86,20 @@ void chuyenDoi();
 }
 
 void nhap(GD &gd){
-    printf("\n\tNhap ten chu ho: "); fflush(stdin); gets(gd.tenchuho);
-    printf("\tNhap loai ho [1. Gia dinh/2. Kinh doanh/ 3. San xuat]?: "); scanf("%d", &gd.loaiho);
-   	printf("\tNhap chi so dau: "); scanf("%d", &gd.chisodau);
-    printf("\tNhap chi so cuoi: "); scanf("%d", &gd.chisocuoi);    
+    cout<<"\n\tNhap ten chu ho: "; fflush(stdin); gets(gd.tenchuho);
+    cout<<"\tNhap loai ho [1. Gia dinh/2. Kinh doanh/ 3. San xuat] ?: ";  cin >> gd.loaiho;
+   	cout<<"\tNhap chi so dau: "; cin>> gd.chisodau;
+    cout<<"\tNhap chi so cuoi: "; cin>> gd.chisocuoi;    
     tinhtien(gd);
 }
     
 void Input(GD a[], int n){
-    printf("\n____________________________________\n");
+    cout<<"\n____________________________________\n";
     for(int i = 0; i< n; ++i){
         printf("\nNhap ho gia dinh thu %d:", i+1);
         nhap(a[i]);
     }
-    printf("\n____________________________________\n");
+    cout<<"\n____________________________________\n";
 }
 void exportfile(GD a[], int n, char fileName[]){
     FILE * fp;
